@@ -33,6 +33,10 @@ ENV POETRY_VIRTUALENVS_CREATE=false \
 
 ENV PATH "/home/vscode/.poetry/bin:$PATH"
 
+# USER vscode
+RUN python3 -m venv /home/vscode/.venv
+RUN chown -R vscode:vscode /home/vscode/.venv
+ENV PATH "/home/vscode/.venv/bin:$PATH"
 
-# RUN curl -sSL https://install.python-poetry.org | python -
+# RUN /home/vscode/.venv/bin/activate && curl -sSL https://install.python-poetry.org | python -
 # COPY --chown=vscode:vscode ./poetry.lock ./pyproject.toml ./
